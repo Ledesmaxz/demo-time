@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule], 
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
@@ -41,9 +41,9 @@ export class LoginComponent {
           (response: any) => {
             console.log('Login successful', response);
             if (response.token) {
-              localStorage.setItem('token', response.token.access); 
+              localStorage.setItem('token', response.token); 
             }
-            this.router.navigate(['/home']);
+            this.router.navigate(['/dashboard']);
           },
           (error) => {
             console.error('Login failed', error);
