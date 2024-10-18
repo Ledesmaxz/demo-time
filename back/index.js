@@ -2,6 +2,7 @@
 const express = require('express');
 const sequelize = require('./config/database');
 const { register, login } = require('./controller/auth');
+const userRoutes = require('./controller/user');
 
 const app = express();
 app.use(express.json()); // Middleware para analizar cuerpos JSON
@@ -9,8 +10,12 @@ app.use(express.json()); // Middleware para analizar cuerpos JSON
 // Ruta para el registro de usuario
 app.post('/api/register', register);
 
+
+
 // Ruta para el inicio de sesión de usuario
 app.post('/api/login', login);
+
+app.use('/api/user', userRoutes);
 
 // Probar la conexión a la base de datos
 sequelize.authenticate()
